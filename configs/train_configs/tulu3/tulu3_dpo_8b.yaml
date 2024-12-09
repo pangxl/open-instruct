@@ -1,10 +1,10 @@
-model_name_or_path: allenai/Llama-3.1-Tulu-3-8B-SFT
+model_name_or_path: /home/pangxl/open-instruct/output/sft_8b
 model_revision: main
 use_flash_attn: true
 gradient_checkpointing: true
 dataset_mixer:
-    allenai/llama-3.1-tulu-3-8b-preference-mixture: 1.0
-tokenizer_name: allenai/Llama-3.1-Tulu-3-8B-SFT
+    /local_ssd_data/pangxl/tulu_test/llama-3.1-tulu-3-8b-preference-mixture: 1.0
+tokenizer_name: /home/pangxl/open-instruct/output/sft_8b
 use_slow_tokenizer: true
 max_seq_length: 2048
 preprocessing_num_workers: 16
@@ -24,3 +24,5 @@ use_lora: false
 dpo_loss_type: dpo_norm
 dpo_beta: 5
 checkpointing_steps: 1000
+push_to_hub: False
+try_launch_beaker_eval_jobs: False

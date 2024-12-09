@@ -1,10 +1,10 @@
-model_name_or_path: meta-llama/Llama-3.1-8B
+model_name_or_path: /local_ssd_data/pangxl/tulu_test/Meta-Llama-3.1-8B
 model_revision: main
 use_flash_attn: true
-tokenizer_name: meta-llama/Llama-3.1-8B
+tokenizer_name: /local_ssd_data/pangxl/tulu_test/Meta-Llama-3.1-8B
 use_slow_tokenizer: true
 dataset_mixer:
-    allenai/tulu-3-sft-mixture: 1.0
+    /local_ssd_data/pangxl/tulu_test/tulu-3-sft-mixture: 1.0
 preprocessing_num_workers: 128
 per_device_train_batch_size: 1 # note, this is set up for 8 GPUs
 gradient_accumulation_steps: 2 # effective batch size 128 with 1 node
@@ -14,10 +14,12 @@ lr_scheduler_type: linear
 warmup_ratio: 0.03
 weight_decay: 0.0
 num_train_epochs: 2
-output_dir: output/dpo_8b
+output_dir: output/sft_8b
 with_tracking: true
 report_to:
   - wandb
 logging_steps: 1
 checkpointing_steps: epoch
-dataset_mix_dir: output/dpo_8b
+dataset_mix_dir: output/sft_8b
+push_to_hub: False
+try_launch_beaker_eval_jobs: False

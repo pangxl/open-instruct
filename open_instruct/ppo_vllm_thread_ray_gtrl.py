@@ -267,7 +267,7 @@ class Args:
     """The wandb's project name"""
     wandb_entity: Optional[str] = None
     """The entity (team) of wandb's project"""
-    push_to_hub: bool = True
+    push_to_hub: bool = False
     """Whether to upload the saved model to huggingface"""
     hf_entity: Optional[str] = None
     """The user or org name of the model repository from the Hugging Face Hub"""
@@ -1665,7 +1665,7 @@ def main(args: Args, dataset_config: DatasetConfig, model_config: ModelConfig):
 
     # create the model and optimizer
     pg = None
-    bundles = [{"GPU": actor_num_gpus, "CPU": actor_num_gpus * 10} for actor_num_gpus in args.actor_num_gpus_per_node]
+    bundles = [{"GPU": actor_num_gpus, "CPU": actor_num_gpus * 7} for actor_num_gpus in args.actor_num_gpus_per_node]
     pg = placement_group(bundles, strategy="STRICT_SPREAD")
     ray.get(pg.ready())
 
